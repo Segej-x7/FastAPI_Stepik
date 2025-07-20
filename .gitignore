@@ -2,6 +2,13 @@
 docker-compose.yml  # Исключает основной файл
 docker-compose.*.yml  # Исключает переопределения (если есть)
 
+# Файлы Docker
+docker-compose.yml
+docker-compose.*.yml
+
+# Исключить файлы с настройками БД
+Cоздания таблиц напрямую в PostgreSQL.txt
+
 # Папки и файлы Python
 __pycache__/
 *.py[cod]
