@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель администратора FastAPI</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Панель администратора FastAPI <span id="role-badge" class="role-badge"></span></h1>
+        
+        <div id="auth-status" class="auth-status not-authenticated">
+            Не авторизован
+        </div>
+
+        <div class="section">
+            <h2>Аутентификация</h2>
+            <button onclick="login()">Войти</button>
+            <button onclick="register()">Зарегистрироваться</button>
+            <button onclick="getCurrentUser()">Текущий пользователь</button>
+            <button onclick="logout()">Выйти</button>
+        </div>
+
+        <div class="section">
+            <h2>Действия с пользователем</h2>
+            <button onclick="updateCurrentUser()">Обновить профиль</button>
+        </div>
+
+        <div class="section" id="admin-section" style="display: none;">
+            <h2>Административные действия</h2>
+            <div>
+                <button onclick="getAllUsers()">Все пользователи</button>
+                <div>
+                    <input type="number" id="userId" placeholder="ID пользователя">
+                    <span id="user-id-error" class="error-message"></span>
+                </div>
+                <button onclick="getUser()">Получить пользователя</button>
+                <button onclick="updateUser()">Обновить пользователя</button>
+                <button onclick="deleteUser()">Удалить пользователя</button>
+            </div>
+        </div>
+
+        <div class="section" id="moderator-section" style="display: none;">
+            <h2>Действия модератора</h2>
+            <button onclick="getAllFeedbacks()">Все отзывы</button>
+            <div>
+                <input type="number" id="feedbackId" placeholder="ID отзыва">
+                <span id="feedback-id-error" class="error-message"></span>
+            </div>
+            <button onclick="deleteFeedback()">Удалить отзыв</button>
+        </div>
+
+        <div class="section">
+            <h2>Действия с отзывами</h2>
+            <div class="feedback-form">
+                <input type="text" id="feedbackName" placeholder="Ваше имя">
+                <input type="email" id="feedbackEmail" placeholder="Ваш email">
+                <input type="text" id="feedbackPhone" placeholder="Ваш телефон (необязательно)">
+                <textarea id="feedbackMessage" placeholder="Текст отзыва"></textarea>
+                <button onclick="createFeedback()">Создать отзыв</button>
+            </div>
+            <button onclick="getMyFeedbacks()">Мои отзывы</button>
+        </div>
+
+        <div class="section">
+            <h2>Система</h2>
+            <button onclick="healthCheck()">Проверка состояния</button>
+        </div>
+
+        <div class="response">
+            <h3>Ответ: <span id="loading-indicator" class="loading" style="display: none;">Загрузка...</span></h3>
+            <pre id="response">Нет данных. Выполните действие, чтобы увидеть результаты.</pre>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

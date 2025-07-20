@@ -1,0 +1,12 @@
+python -m venv .venv
+
+.venv/Scripts/activate
+
+
+python.exe -m pip install --upgrade pip
+
+deactivate - декативация
+
+pip install -r requirements.txt  #зависимости
+
+pip freeze > requirements.txt # создание файла requirements.txt

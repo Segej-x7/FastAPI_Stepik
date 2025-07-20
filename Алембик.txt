@@ -1,0 +1,26 @@
+Выполните следующие команды:
+
+Полностью очистите старые файлы Alembic:
+
+bash
+docker-compose exec backend rm -rf /app/alembic.ini /app/alembic/
+
+Переинициализируйте Alembic:
+
+bash
+docker-compose exec backend bash -c "cd /app && alembic init alembic"
+
+bash
+# Удаляем старую миграцию
+docker-compose exec backend rm /app/alembic/versions/3cdde146710f_initial_tables.py
+
+# Откатываем базу (если нужно)
+docker-compose exec db psql -U postgres -d fastapi_db -c "DROP TABLE alembic_version;"
+
+# Создаем новую миграцию
+docker-compose exec backend alembic revision --autogenerate -m "Initial tables"
+
+# Применяем миграцию
+docker-compose exec backend alembic upgrade head
+
+
